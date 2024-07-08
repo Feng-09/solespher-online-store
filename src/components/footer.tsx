@@ -9,7 +9,7 @@ export default function Footer() {
         <footer className="bg-[#141718] pt-20 pb-8 px-[3.75rem] w-screen flex flex-col gap-y-12 max-lg:py-12 max-lg:px-6">
             <div className="flex justify-between items-center max-lg:flex-col gap-y-10">
                 <div className="flex gap-x-8 items-center max-lg:flex-col gap-y-4">
-                  <h1 className="text-[1.6875rem] font-black leading-[2.056875rem] text-white font-mont">SOLESPHERE</h1>
+                  <h1 className="text-[1.6875rem] font-black leading-[2.056875rem] text-white font-mont" onClick={() => {router.push('/')}}>SOLESPHERE</h1>
                   <div className="w-[1px] h-6 bg-[#6C7275] max-lg:h-[1px] max-lg:w-6"></div>
                   <p className="font-aeonik text-[#E8ECEF] text-sm leading-[1.375rem]">Shoe Store</p>
                 </div>

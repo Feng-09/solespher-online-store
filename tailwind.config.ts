@@ -22,6 +22,9 @@ const config: Config = {
       addUtilities([{
         '.no-scrollbar': {
           'scrollbar-width': 'none',
+        },
+        '.iosblur': {
+          '-webkit-backdrop-filter': 'blur(40.774227142333984px)'
         }
       }])
     }

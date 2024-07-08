@@ -10,7 +10,7 @@ export default function Process(props: ProcessProps) {
     const router = useRouter()
 
     return (
-        <div className="flex gap-x-8 overflow-x-scroll no-scrollbar w-full lg:w-fit justify-center">
+        <div className="flex gap-x-8 overflow-x-scroll no-scrollbar w-full lg:w-fit justify-start">
             <div className={"flex items-start pb-[1.625rem] w-fit pr-2 lg:pr-20 hover:cursor-pointer" + (props.page === "cart" ? " border-b-[2px] border-black" : "")} onClick={() => {router.push('/cart')}}>
                 <div className="flex items-center gap-x-6">
                     <div className={"rounded-[2.5rem] py-2 px-4 text-center font-aeonik font-bold leading-[1.15rem] text-white" + (props.page === "cart" ? " bg-[#23262F]" : " bg-[#38CB89]")}>{props.page === "cart" ? "1" : "✔"}</div>

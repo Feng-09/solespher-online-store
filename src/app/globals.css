@@ -133,6 +133,8 @@
   overflow: hidden;
   opacity: 0;
   transition: 0.5s;
+  -webkit-backdrop-filter: blur(40.774227142333984px);
+  backdrop-filter: blur(40.774227142333984px);
 }
 
 .menu.expand {
