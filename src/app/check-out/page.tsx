@@ -40,7 +40,7 @@ export default function Checkout() {
     return (
         <div className="w-full flex flex-col items-center">
         <div className="absolute flex gap-x-1 left-8 lg:left-12 hover:cursor-pointer" onClick={() => {router.back()}}>
-            <Image src="/images/vector.svg" alt="back" width={10} height={10} />
+            <Image src="/images/Vector.svg" alt="back" width={10} height={10} />
             <p className="font-aeonik text-[#605F5F] font-medium text-sm leading-6">Back</p>
         </div>
 

@@ -1,8 +1,10 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function Footer() {
+  const router = useRouter()
     return (
         <footer className="bg-[#141718] pt-20 pb-8 px-[3.75rem] w-screen flex flex-col gap-y-12 max-lg:py-12 max-lg:px-6">
             <div className="flex justify-between items-center max-lg:flex-col gap-y-10">
@@ -13,7 +15,7 @@ export default function Footer() {
                 </div>
 
                 <div className="flex gap-x-10 items-center max-lg:flex-col gap-y-8">
-                  <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer">
+                  <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer" onClick={() => {router.push('/')}}>
                     <p className="font-aeonik text-sm leading-[1.375rem] text-[#FEFEFE]">Home</p>
                     <div className="w-0 h-[1px] group-hover:w-8 duration-100 bg-white"></div>
                   </div>
