@@ -14,7 +14,7 @@ export default function Cart() {
     const router = useRouter()
     
     useEffect(() => {
-        if (typeof window !== undefined) {
+        if (typeof window != "undefined") {
             const cartArray = window.localStorage.getItem('cartArray')
             if (cartArray)
             setCart(JSON.parse(cartArray))
@@ -22,7 +22,7 @@ export default function Cart() {
     }, [])
 
     useEffect(() => {
-        if (typeof window !== undefined) {
+        if (typeof window != "undefined") {
             window.localStorage.setItem('subTotal', JSON.stringify(subTotalAdd))
             window.localStorage.setItem('shipping', JSON.stringify(shipping))
         }

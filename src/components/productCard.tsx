@@ -18,7 +18,7 @@ export default function ProductCard(props: CardProps) {
     const { cart, setCart } = useContext(cartContext)
 
     useEffect(() => {
-        if (typeof window !== undefined) {
+        if (typeof window != "undefined") {
             window.localStorage.setItem('cartArray', JSON.stringify(cart))
         }
     }, [cart])
