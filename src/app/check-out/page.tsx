@@ -146,7 +146,7 @@ export default function Checkout() {
                 <div className="flex flex-col gap-y-6">
                     <div className="flex flex-col gap-y-6">
                         {cart?.map((item, id) => {
-                            return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} setSubTotalAdd={setTotalAdd} />)
+                            return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} key={id} setSubTotalAdd={setTotalAdd} />)
                         })}
                     </div>
                     <div className="flex gap-x-2">
