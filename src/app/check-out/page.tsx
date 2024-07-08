@@ -19,9 +19,10 @@ export default function Checkout() {
     let subtotal: any;
     let shipping: any;
 
+
     if (typeof window !== undefined) {
-        subtotal = localStorage.getItem('subTotal');
-        shipping = localStorage.getItem('shipping');
+        subtotal = window.localStorage.getItem('subTotal');
+        shipping = window.localStorage.getItem('shipping');
     }
 
     subtotal = JSON.parse(subtotal)
@@ -29,7 +30,7 @@ export default function Checkout() {
     
     useEffect(() => {
         if (typeof window !== undefined) {
-            const cartArray = localStorage.getItem('cartArray')
+            const cartArray = window.localStorage.getItem('cartArray')
             if (cartArray)
             setCart(JSON.parse(cartArray))
         }

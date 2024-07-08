@@ -19,7 +19,7 @@ export default function ProductCard(props: CardProps) {
 
     useEffect(() => {
         if (typeof window !== undefined) {
-            localStorage.setItem('cartArray', JSON.stringify(cart))
+            window.localStorage.setItem('cartArray', JSON.stringify(cart))
         }
     }, [cart])
 

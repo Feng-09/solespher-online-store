@@ -22,7 +22,7 @@ export default function CartProductCard(props: CartProductCardProps) {
 
     useEffect(() => {
         if (typeof window !== undefined) {
-            const cartArray = localStorage.getItem('cartArray')
+            const cartArray = window.localStorage.getItem('cartArray')
             if (cartArray)
             setCart(JSON.parse(cartArray))
         }
@@ -53,7 +53,7 @@ export default function CartProductCard(props: CartProductCardProps) {
         })
         setCart(newCart)
         if (typeof window !== undefined) {
-            localStorage.setItem('cartArray', JSON.stringify(newCart))
+            window.localStorage.setItem('cartArray', JSON.stringify(newCart))
         }
         // props.setSubTotalAdd(a => a - (qty * price))
     }

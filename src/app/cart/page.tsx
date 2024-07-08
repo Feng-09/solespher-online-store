@@ -15,7 +15,7 @@ export default function Cart() {
     
     useEffect(() => {
         if (typeof window !== undefined) {
-            const cartArray = localStorage.getItem('cartArray')
+            const cartArray = window.localStorage.getItem('cartArray')
             if (cartArray)
             setCart(JSON.parse(cartArray))
         }
@@ -23,8 +23,8 @@ export default function Cart() {
 
     useEffect(() => {
         if (typeof window !== undefined) {
-            localStorage.setItem('subTotal', JSON.stringify(subTotalAdd))
-            localStorage.setItem('shipping', JSON.stringify(shipping))
+            window.localStorage.setItem('subTotal', JSON.stringify(subTotalAdd))
+            window.localStorage.setItem('shipping', JSON.stringify(shipping))
         }
     }, [subTotalAdd, shipping])
 
