@@ -23,10 +23,11 @@ export default function Checkout() {
     if (typeof window != "undefined") {
         subtotal = window.localStorage.getItem('subTotal');
         shipping = window.localStorage.getItem('shipping');
+        
+        subtotal = JSON.parse(subtotal)
+        shipping = JSON.parse(shipping)
     }
 
-    subtotal = JSON.parse(subtotal)
-    shipping = JSON.parse(shipping)
     
     useEffect(() => {
         if (typeof window != "undefined") {
