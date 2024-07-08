@@ -1,0 +1,100 @@
+{
+    "products": [
+        {
+            "img": "/images/shoe1.png",
+            "price": "₦ 124,000",
+            "brand": "NIKE",
+            "shoe": "Jordan Spizike Low",
+            "color": "White"
+        },
+        {
+            "img": "/images/shoe2.png",
+            "price": "₦ 64,000",
+            "brand": "NIKE",
+            "shoe": "Air Jordan 1 Mid SE",
+            "color": "White",
+            "discount": "33% off",
+            "sale": "SALE"
+        },
+        {
+            "img": "/images/shoe3.png",
+            "price": "₦ 124,000",
+            "brand": "NIKE",
+            "shoe": "Jordan Max Aura 6",
+            "color": "Black"
+        },
+        {
+            "img": "/images/shoe4.png",
+            "price": "₦ 164,000",
+            "brand": "NIKE",
+            "shoe": "Air Jordan 6 Retro \"White/Black",
+            "color": "White",
+            "discount": "33% off",
+            "sale": "SALE"
+        },
+        {
+            "img": "/images/shoe3.png",
+            "price": "₦ 64,000",
+            "brand": "NIKE",
+            "shoe": "Jordan Max Aura 6",
+            "color": "Black",
+            "discount": "33% off",
+            "sale": "SALE"
+        },
+        {
+            "img": "/images/shoe5.png",
+            "price": "₦ 124,000",
+            "brand": "NIKE",
+            "shoe": "Nike Air Jordan 5 Retro SE - Sail/Orewood",
+            "color": "Red"
+        },
+        {
+            "img": "/images/shoe6.png",
+            "price": "₦ 54,000",
+            "brand": "NIKE",
+            "shoe": "Jordan Spizike Low",
+            "color": "White",
+            "discount": "33% off",
+            "sale": "SALE"
+        },
+        {
+            "img": "/images/shoe7.png",
+            "price": "₦ 28,000",
+            "brand": "NIKE",
+            "shoe": "Air Jordan 1 Retro High OG \"Black & White\"",
+            "color": "Black & White"
+        },
+        {
+            "img": "/images/shoe8.png",
+            "price": "₦ 46,000",
+            "brand": "NIKE",
+            "shoe": "Air Jordan 1 Low G",
+            "color": "Green"
+        },
+        {
+            "img": "/images/shoe9.png",
+            "price": "₦ 34,000",
+            "brand": "NIKE",
+            "shoe": "Jordan Roam",
+            "color": "Black",
+            "discount": "33% off",
+            "sale": "SALE"
+        },
+        {
+            "img": "/images/shoe10.png",
+            "price": "₦ 124,000",
+            "brand": "NIKE",
+            "shoe": "Air Jordan 1 Element",
+            "color": "Blue"
+        },
+        {
+            "img": "/images/shoe11.png",
+            "price": "₦ 49,000",
+            "brand": "NIKE",
+            "shoe": "Nike Air Jordan 5 Retro SE - Sail/Orewood",
+            "color": "Green",
+            "discount": "33% off",
+            "sale": "SALE"
+        }
+    ]
+}

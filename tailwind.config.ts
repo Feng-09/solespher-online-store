@@ -8,13 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mont: ["Montserrat", 'sans-serif'],
+        aeonik: ['"Aeonik Pro"', 'sans-serif']
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "hero-pattern": "url('../../public/images/bg1.png')"
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({addUtilities}: any) {
+      addUtilities([{
+        '.no-scrollbar': {
+          'scrollbar-width': 'none',
+        }
+      }])
+    }
+  ],
 };
 export default config;

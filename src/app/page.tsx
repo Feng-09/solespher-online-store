@@ -1,113 +1,84 @@
+"use client"
+
 import Image from "next/image";
+import dunks1 from '../../public/images/Dunks1.png'
+import ExploreButton from "@/components/exploreButton";
+import ExclusiveCard from "@/components/exclusiveCard";
+import ProductCard from "@/components/productCard";
+import data from "../products.json";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const products = data.products
+  const router = useRouter()
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+    <main className="w-full pt-6 lg:pt-12">
+      <section className="w-full h-fit flex bg-hero-pattern bg-center px-16 lg:max-xl:px-4 max-lg:flex-col max-lg:px-4 max-lg:items-center max-lg:pt-8">
+        <div className="w-1/2 pl-10 pr-[7.8rem] py-32 flex flex-col gap-y-10 lg:max-xl:px-12 max-lg:p-4 max-lg:w-full max-lg:text-center max-lg:items-center max-lg:max-w-[25rem]">
+          <h1 className="text-[2.5rem] font-aeonik font-bold leading-[2.875rem] text-white max-lg:text-2xl">Step Up Your Sneaker Game</h1>
+          <p className="text-white font-aeonik text-2xl font-medium leading-[1.725rem] max-lg:text-base">Discover the latest and greatest in sneaker fashion. From exclusive releases to unbeatable deals, find your perfect pair today!</p>
+          <ExploreButton />
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <Image src={dunks1} alt="dunks1" className="w-1/2 max-lg:w-full max-lg:max-w-[30rem]" />
+      </section>
     </main>
+
+      <section className="w-full px-[3.75rem] py-10 lg:max-xl:px-10 max-sm:px-6">
+        <h2 className="font-aeonik font-bold text-[2rem] leading-[2.3rem] mb-8 max-sm:w-80 ">Exclusive Deals Just For You</h2>
+        <div className="flex w-full justify-between max-lg:flex-col items-center gap-y-8">
+          <div className="bg-[#F3EEE8] rounded-3xl">
+            <ExclusiveCard
+            img="/LimitedImg.png"
+            heading="Limited-Time Offers"
+            text="Grab hot deals before they're gone! Exclusive discounts on top brands for a limited time."
+            width={340}
+            height={197} />
+          </div>
+          <div className="bg-[#EFEFEF] rounded-3xl">
+            <ExclusiveCard
+            img="/images/surpriseImg.png"
+            heading="Get Surprise Item"
+            text="Discover exclusive, surprises curated just for you. Don't miss out on these rare finds!"
+            width={320}
+            height={320} />
+          </div>
+          <div className="bg-[#F8F6F0] rounded-3xl">
+            <ExclusiveCard
+            img="/images/membersImg.png"
+            heading="Members-Only Access"
+            text="Unlock special perks and early access to new releases and stay ahead in the sneaker game."
+            width={313.03}
+            height={232} />
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full px-[3.75rem] h-fit">
+        <div className="h-[1px] w-full bg-[#CECECE]"></div>
+      </div>
+
+      <section className="w-full px-[3.75rem] py-10 lg:max-xl:px-10 max-sm:p-6">
+        <h2 className="font-aeonik font-bold text-2xl leading-[1.725rem] mb-8">Latest Products</h2>
+        <div className="grid justify-items-center grid-cols-4 gap-y-12 md:max-xl:grid-cols-3 max-md:grid-cols-2">
+        {products.map((product, id) => {
+          return (<ProductCard
+            img={product.img}
+            price={product.price}
+            brand={product.brand}
+            shoe={product.shoe}
+            discount={product.discount}
+            sale={product.sale}
+            color={product.color}
+            key={id} />)
+        })}
+        </div>
+      </section>
+
+      <div className="w-full px-[3.75rem] h-fit mb-20">
+        <div className="h-[1px] w-full bg-[#CECECE]"></div>
+      </div>
+    </>
   );
 }
