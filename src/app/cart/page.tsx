@@ -14,14 +14,18 @@ export default function Cart() {
     const router = useRouter()
     
     useEffect(() => {
-        const cartArray = localStorage.getItem('cartArray')
-        if (cartArray)
-        setCart(JSON.parse(cartArray))
+        if (typeof window !== undefined) {
+            const cartArray = localStorage.getItem('cartArray')
+            if (cartArray)
+            setCart(JSON.parse(cartArray))
+        }
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('subTotal', JSON.stringify(subTotalAdd))
-        localStorage.setItem('shipping', JSON.stringify(shipping))
+        if (typeof window !== undefined) {
+            localStorage.setItem('subTotal', JSON.stringify(subTotalAdd))
+            localStorage.setItem('shipping', JSON.stringify(shipping))
+        }
     }, [subTotalAdd, shipping])
 
     return (

@@ -16,16 +16,23 @@ export default function Checkout() {
     const { cart, setCart } = useContext(cartContext)
     const [totalAdd, setTotalAdd] = useState(0)
 
-    let subtotal: any = localStorage.getItem('subTotal');
-    let shipping: any = localStorage.getItem('shipping');
+    let subtotal: any;
+    let shipping: any;
+
+    if (typeof window !== undefined) {
+        subtotal = localStorage.getItem('subTotal');
+        shipping = localStorage.getItem('shipping');
+    }
 
     subtotal = JSON.parse(subtotal)
     shipping = JSON.parse(shipping)
     
     useEffect(() => {
-        const cartArray = localStorage.getItem('cartArray')
-        if (cartArray)
-        setCart(JSON.parse(cartArray))
+        if (typeof window !== undefined) {
+            const cartArray = localStorage.getItem('cartArray')
+            if (cartArray)
+            setCart(JSON.parse(cartArray))
+        }
     }, [])
 
     return (

@@ -21,9 +21,11 @@ export default function CartProductCard(props: CartProductCardProps) {
     const pathname = usePathname()
 
     useEffect(() => {
-        const cartArray = localStorage.getItem('cartArray')
-        if (cartArray)
-        setCart(JSON.parse(cartArray))
+        if (typeof window !== undefined) {
+            const cartArray = localStorage.getItem('cartArray')
+            if (cartArray)
+            setCart(JSON.parse(cartArray))
+        }
     }, [])
 
     const price = Number(props.price.split(" ").at(1)?.split(",").join(""))
@@ -50,7 +52,9 @@ export default function CartProductCard(props: CartProductCardProps) {
             return item.shoe != props.shoe
         })
         setCart(newCart)
-        localStorage.setItem('cartArray', JSON.stringify(newCart))
+        if (typeof window !== undefined) {
+            localStorage.setItem('cartArray', JSON.stringify(newCart))
+        }
         // props.setSubTotalAdd(a => a - (qty * price))
     }
 
