@@ -57,7 +57,7 @@ export default function NavBar() {
             <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line2'></div>
             <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line3'></div>
           </div>
-          <h1 className="text-[1.6875rem] font-black leading-[2.056875rem] text-black font-mont max-sm:text-xl max-lg:ml-6" onClick={() => {router.push('/')}}>SOLESPHERE</h1>
+          <h1 className="text-[1.6875rem] font-black leading-[2.056875rem] text-black font-mont max-sm:text-xl max-lg:ml-6 hover:cursor-pointer" onClick={() => {router.push('/')}}>SOLESPHERE</h1>
           <div className="flex gap-x-4 absolute left-1/2 -ml-[14.512rem] max-lg:hidden">
             <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer" onClick={() => {router.push('/')}}>
               <p className="px-6 py-2 font-aeonik font-normal text-base leading-[1.15rem]">Home</p>

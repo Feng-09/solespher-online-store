@@ -128,18 +128,23 @@
 }
 
 .menu {
-  height: 0;
+  height: 100vh;
+  top: -100vh;
   padding-top: 0;
   overflow: hidden;
   opacity: 0;
   transition: 0.5s;
-  -webkit-backdrop-filter: blur(40.774227142333984px);
-  backdrop-filter: blur(40.774227142333984px);
 }
 
 .menu.expand {
   height: 100vh;
+  top: 0;
   padding-top: 5rem;
   opacity: 1;
   transition: 0.5s;
+}
+
+.menu.blurry {
+  -webkit-backdrop-filter: blur(40.774227142333984px);
+  backdrop-filter: blur(40.774227142333984px);
 }

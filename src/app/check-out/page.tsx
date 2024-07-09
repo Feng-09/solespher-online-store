@@ -82,10 +82,10 @@ export default function Checkout() {
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">STREET ADDRESS *</h3>
                         <input placeholder="Street Address" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                     </div>
-                    <div className="flex flex-col gap-y-3 relative">
+                    <div className="flex flex-col gap-y-3 relative h-fit z-10 active:h-10rem duration-300 group">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">COUNTRY *</h3>
                         <input placeholder="country" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
-                        <Image src="/images/chevron-down.svg" alt="pick country" width={24} height={24} className="absolute right-4 top-9" />
+                        <Image src="/images/chevron-down.svg" alt="pick country" width={24} height={24} className="absolute right-4 top-9 group-active:rotate-180 duration-300" />
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">TOWN / CITY *</h3>
