@@ -2,16 +2,33 @@
 
 import Image from "next/image";
 import searchIcon from "../../public/images/searchIcon.svg";
-import cartIcon from "../../public/images/cartIcon.svg";
+import cartIcon from "../../public/images/buttonSignin.png";
 import exit from '../../public/images/circle-xmark-regular.svg';
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { menuContext } from "./menuContext";
+import { cartContext } from "./cartContext";
 import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const [searchInp, setSearchInp] = useState('');
   const { menu, setMenu } = useContext(menuContext)
+  const [cartItems, setCartItems] = useState(0)
   const router = useRouter()
+  const { cart, setCart } = useContext(cartContext)
+
+  useEffect(() => {
+    setCartItems(cart?.length)
+  }, [cart])
+
+  useEffect(() => {
+    if (typeof window != "undefined") {
+        const cartArray: any = window.localStorage.getItem('cartArray')
+        const cart = JSON.parse(cartArray)
+        if (cart.length != 0) {
+          setCartItems(cart.length)
+        }
+    }
+  }, [])
 
   const handleMenu = /* contextSafe */((e: any) => {
     if (setMenu != undefined)
@@ -92,8 +109,9 @@ export default function NavBar() {
                 className="w-4 h-4 absolute top-[0.6rem] right-[0.6rem] hidden group-hover:block duration-300" />
               ) : null}
             </div>
-            <div className="w-10 h-10 rounded-full border border-[#E4EBF1] hover:cursor-pointer flex items-center justify-center" onClick={() => {router.push('/cart')}}>
+            <div className="w-10 h-10 rounded-full border border-[#E4EBF1] hover:cursor-pointer flex items-center justify-center relative" onClick={() => {router.push('/cart')}}>
               <Image src={cartIcon} alt="cart" className="w-6 h-6" />
+              <div className="text-white w-2 h-2 flex items-center justify-center text-xs rounded-full bg-black font-aeonik absolute -top-1 -right-1">{cartItems}</div>
             </div>
           </div>
         </div>
