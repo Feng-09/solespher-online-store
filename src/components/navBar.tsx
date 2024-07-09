@@ -68,7 +68,7 @@ export default function NavBar() {
 
     return (
       <>
-      <div className='lg:hidden flex flex-col gap-y-1 ham fixed z-50 top-[2.875rem] left-4' onClick={handleMenu}>
+      <div className='lg:hidden flex flex-col gap-y-1 ham fixed z-50 top-[2.75rem] left-6' onClick={handleMenu}>
         <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line1'></div>
         <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line2'></div>
         <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line3'></div>
