@@ -62,7 +62,7 @@ export default function Cart() {
             <p className="font-aeonik text-sm text-[#6C7275] leading-4">Add your code for an instant cart discount</p>
             <div className="relative p-4 rounded-lg pl-12 border border-[#6C7275] my-4">
                 <Image src="/images/ticket-percent.svg" alt="coupon" width={24} height={24} className="absolute left-4 top-4" />
-                <input placeholder="Coupon Code" type="input" value="" className="focus:outline-none lg:w-[26.5rem]" />
+                <input placeholder="Coupon Code" type="input" className="focus:outline-none lg:w-[26.5rem]" />
                 <p className="font-aeonik font-medium leading-[1.15rem] text-[#141718] tracking-[-0.4px] absolute right-4 top-4 hover:cursor-pointer">Apply</p>
             </div>
         </section>

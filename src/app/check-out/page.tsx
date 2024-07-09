@@ -57,20 +57,20 @@ export default function Checkout() {
                     <div className="flex justify-between w-full gap-x-12">
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">FIRST NAME</h3>
-                            <input placeholder="First name" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="First name" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         </div>
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">LAST NAME</h3>
-                            <input placeholder="Last name" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="Last name" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">PHONE NUMBER</h3>
-                        <input placeholder="Phone number" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Phone number" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">EMAIL ADDRESS</h3>
-                        <input placeholder="Your email" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Your email" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                     </div>
                 </div>
             </section>
@@ -80,25 +80,25 @@ export default function Checkout() {
                 <div className="flex flex-col gap-y-6">
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">STREET ADDRESS *</h3>
-                        <input placeholder="Street Address" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Street Address" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                     </div>
                     <div className="flex flex-col gap-y-3 relative h-fit z-10 active:h-10rem duration-300 group">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">COUNTRY *</h3>
-                        <input placeholder="country" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="country" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         <Image src="/images/chevron-down.svg" alt="pick country" width={24} height={24} className="absolute right-4 top-9 group-active:rotate-180 duration-300" />
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">TOWN / CITY *</h3>
-                        <input placeholder="Town / City" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Town / City" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                     </div>
                     <div className="flex justify-between gap-x-12">
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">STATE</h3>
-                            <input placeholder="State" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="State" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         </div>
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">ZIP CODE</h3>
-                            <input placeholder="Zip Code" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="Zip Code" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         </div>
                     </div>
                     <div className="flex gap-x-2 items-center hover:cursor-pointer w-fit" onClick={() => {setCheck(a => !a)}}>
@@ -132,16 +132,16 @@ export default function Checkout() {
 
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">CARD NUMBER</h3>
-                        <input placeholder="1234 1234 1234" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="1234 1234 1234" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                     </div>
                     <div className="flex justify-between gap-x-12">
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">EXPIRATION DATE</h3>
-                            <input placeholder="MM/YY" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="MM/YY" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         </div>
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">CVC</h3>
-                            <input placeholder="CVC code" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="CVC code" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@ export default function Checkout() {
                         })}
                     </div>
                     <div className="flex gap-x-2">
-                        <input placeholder="Input" value="" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-[2.625rem] w-full" />
+                        <input placeholder="Input" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-[2.625rem] w-full" />
                         <div className="bg-[#141718] py-3 px-[1.625rem] rounded-lg text-white font-aeonik font-medium leading-[1.15rem] tracking-[-0.4px] hover:cursor-pointer hover:bg-white hover:text-black border-2 hover:border-black duration-300">Apply</div>
                     </div>
                     <div>
