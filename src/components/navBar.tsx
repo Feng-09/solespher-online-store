@@ -73,7 +73,7 @@ export default function NavBar() {
         <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line2'></div>
         <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line3'></div>
       </div>
-      <nav className="w-full h-[8.25rem] pt-[1.875rem] flex flex-col max-sm:pt-4 z-40 fixed top-0 bg-white">
+      <nav className="w-full h-[8.25rem] pt-[1.875rem] flex flex-col max-sm:pt-4 z-40 fixed top-0 bg-white max-lg:h-fit">
         <div className="flex items-center justify-between w-full px-[3.75rem] py-4 relative max-lg:px-4">
           <h1 className="text-[1.6875rem] font-black leading-[2.056875rem] text-black font-mont max-sm:text-xl max-lg:ml-10 hover:cursor-pointer" onClick={() => {router.push('/')}}>SOLESPHERE</h1>
           <div className="flex gap-x-4 absolute left-1/2 -ml-[14.512rem] max-lg:hidden">
