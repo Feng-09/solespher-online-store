@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + ' bg-white'}>
+      <body className={inter.className + ' bg-white pt-[8.25rem]'}>
         <MenuContextProvider>
           <CartContextProvider>
             <NavBar />
