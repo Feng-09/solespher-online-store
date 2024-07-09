@@ -50,7 +50,7 @@ export default function NavBar() {
   })
 
     return (
-        <nav className="w-full h-[8.25rem] pt-[1.875rem] flex flex-col max-sm:pt-4 z-40">
+        <nav className="w-full h-[8.25rem] pt-[1.875rem] flex flex-col max-sm:pt-4 z-50">
         <div className="flex items-center justify-between w-full px-[3.75rem] py-4 relative max-lg:px-4">
           <div className='lg:hidden flex flex-col gap-y-1 ham mr-4 absolute z-50' onClick={handleMenu}>
             <div className='w-4 h-[2px] bg-black dark:bg-black rounded-full' id='line1'></div>
