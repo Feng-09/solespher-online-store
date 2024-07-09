@@ -111,7 +111,7 @@ export default function NavBar() {
             </div>
             <div className="w-10 h-10 rounded-full border border-[#E4EBF1] hover:cursor-pointer flex items-center justify-center relative" onClick={() => {router.push('/cart')}}>
               <Image src={cartIcon} alt="cart" className="w-full h-full" />
-              <div className="text-white w-4 h-4 flex items-center justify-center text-[8px] rounded-full bg-black font-aeonik absolute top-0 right-0">{cartItems}</div>
+              <div className="text-white w-4 h-4 flex items-center justify-center text-[9px] rounded-full bg-black font-aeonik absolute top-[2px] right-[2px]">{cartItems}</div>
             </div>
           </div>
         </div>
