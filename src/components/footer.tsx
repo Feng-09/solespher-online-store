@@ -37,7 +37,7 @@ export default function Footer() {
             <div className="border-t border-[#6C7275] py-4 flex justify-between items-center max-lg:flex-col-reverse max-lg:py-6 gap-y-8">
                 <div className="flex gap-x-7 items-center max-lg:flex-col-reverse gap-y-8">
                     <div>
-                      <p className="font-aeonik text-xs leading-5 text-[#E8ECEF]">Copyright © 2023 SOLESPHERE. All rights reserved</p>
+                      <p className="font-aeonik text-xs leading-5 text-[#E8ECEF]">Copyright © 2024 SOLESPHERE. All rights reserved</p>
                     </div>
                     <div className="flex gap-x-7">
                       <p className="font-aeonik text-xs leading-[0.8625rem] font-bold text-[#E8ECEF] hover:cursor-pointer">Privacy Policy</p>
