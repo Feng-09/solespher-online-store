@@ -147,5 +147,5 @@
 .menu.blurry {
   -webkit-backdrop-filter: blur(40.774227142333984px);
   backdrop-filter: blur(40.774227142333984px);
-  z-index: 1;
+  z-index: 45;
 }
