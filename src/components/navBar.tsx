@@ -24,8 +24,8 @@ export default function NavBar() {
     if (typeof window != "undefined") {
         const cartArray: any = window.localStorage.getItem('cartArray')
         const cart = JSON.parse(cartArray)
-        if (cart.length != 0) {
-          setCartItems(cart.length)
+        if (cart?.length != 0) {
+          setCartItems(cart?.length)
         }
     }
   }, [])
