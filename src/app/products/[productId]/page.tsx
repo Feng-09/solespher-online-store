@@ -1,0 +1,82 @@
+"use client"
+
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "../../../../pages/api/actions";
+import Image from "next/image";
+import { useContext, useEffect } from "react";
+import { cartContext } from "@/components/cartContext";
+
+export default function ProductId({ params }: {
+    params: { productId: number }
+}) {
+    
+    const { data, isLoading } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => await getProducts()
+    })
+    
+    let products: {
+        name: string,
+        photos: { url: string }[],
+        current_price: { NGN: number[] }[],
+        description: string
+    }[] = []
+    if (data) {
+      console.log(data)
+      products = data.items
+    }
+
+    const { cart, setCart } = useContext(cartContext)
+
+    const addToCart = () => {
+        setCart((prevCart) => [...prevCart, {
+            img: `https://api.timbu.cloud/images/${products[params.productId]?.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`,
+            shoe: products[params.productId]?.name,
+            price: `₦ ${products[params.productId]?.current_price[0]?.NGN[0].toLocaleString('en-US', {useGrouping: true})}`,
+            color: '',
+            qty: 1
+        }])
+    }
+
+    useEffect(() => {
+        if (typeof window != "undefined") {
+            window.localStorage.setItem('cartArray', JSON.stringify(cart))
+        }
+    }, [cart])
+
+    return (
+        <div className="flex flex-col gap-y-20 items-center p-6">
+        <main className="w-full flex flex-col gap-y-8 h-fit lg:flex-row lg:justify-between lg:px-12 pb-20 lg:pb-60">
+            <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
+            alt="product display"
+            width={465.53}
+            height={532}
+            className="rounded-lg" />
+            <div className="lg:h-[24rem] h-80 flex flex-col justify-between lg:w-1/3">
+                <h1 className="font-aeonik font-bold text-[#141718] leading-[2.875rem] text-3xl lg:text-[2.5rem] tracking-tight">{products[params.productId]?.name}</h1>
+                <h1 className="font-aeonik font-bold text-[#141718] leading-[2.875rem] text-3xl lg:text-[2.5rem]">{`₦ ${products[params.productId]?.current_price[0]?.NGN[0].toLocaleString('en-US', {useGrouping: true})}`}</h1>
+                <div>
+                    <div className="bg-[#141718] max-w-[29rem] flex justify-center gap-x-2 py-4 px-10 rounded-xl text-white hover:cursor-pointer border-2 duration-300" onClick={addToCart}>
+                        <Image src="/images/shopping-cart.svg" alt="cart" width={24} height={24} />
+                        <p className="font-aeonik font-bold leading-[1.15rem] tracking-wide">Add To Cart</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section className="w-full lg:w-3/5 flex flex-col items-center gap-y-8 border-2 border-[#74748B] mb-20 rounded-2xl py-8">
+            <div className="bg-[#F8F8F8] p-1 rounded-3xl w-fit">
+              <div className="bg-white text-[#333333] font-medium leading-6 font-aeonik rounded-3xl py-2 px-4">Product Details</div>
+            </div>
+
+            <div className="flex flex-col gap-y-4 w-full px-4 lg:w-[36rem]">
+                <div className="flex gap-x-2">
+                    <Image src="/images/note-2.svg" width={24} height={24} alt="description" />
+                    <p className="font-aeonik font-medium text-[#141718] text-sm">Description</p>
+                </div>
+                <p className="font-aeonik text-sm text-[#74748B]">{products[params.productId]?.description}</p>
+            </div>
+        </section>
+        </div>
+    )
+}

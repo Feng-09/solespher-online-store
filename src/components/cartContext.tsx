@@ -7,13 +7,15 @@ type cartContextType = {
         img: string,
         shoe: string,
         price: string,
-        color: string
+        color: string,
+        qty: number
     }[],
     setCart: React.Dispatch<React.SetStateAction<{
         img: string,
         shoe: string,
         price: string,
-        color: string
+        color: string,
+        qty: number
     }[]>>
 }
 
@@ -28,7 +30,8 @@ export const CartContextProvider = ({children}: cartContextProviderProps) => {
         img: string,
         shoe: string,
         price: string,
-        color: string
+        color: string,
+        qty: number
     }[]>([])
     return <cartContext.Provider value={{ cart, setCart }}>{children}</cartContext.Provider>
 }

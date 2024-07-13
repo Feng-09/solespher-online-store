@@ -5,12 +5,39 @@ import dunks1 from '../../public/images/Dunks1.png'
 import ExploreButton from "@/components/exploreButton";
 import ExclusiveCard from "@/components/exclusiveCard";
 import ProductCard from "@/components/productCard";
-import data from "../products.json";
-import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "../../pages/api/actions";
+import Products from "./products/page";
+import { useContext, useEffect } from "react";
+import { searchContext } from "@/components/searchContext";
 
 export default function Home() {
-  const products = data.products
-  const router = useRouter()
+  const { searchInp, setSearchInp } = useContext(searchContext)
+  const { data, isLoading } = useQuery({
+    queryKey: ['products'],
+    queryFn: async () => await getProducts()
+  })
+
+  let products: [] = []
+  if (data) {
+    console.log(data)
+    products = data.items
+  }
+
+  useEffect(() => {
+    if (data && searchInp !== '') {
+      products.filter((item: { name: string }) => {
+        return item.name.includes(searchInp)
+      })
+    }
+  }, [searchInp])
+
+
+  // const extrainfo = async (product: any) => {
+  //   const response = await fetch(`https://api.timbu.cloud/extrainfo/products/${product.id}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`)
+  //   const info = response.json()
+  //   return info;
+  // }
 
   return (
     <>
@@ -62,15 +89,24 @@ export default function Home() {
       <section className="w-full px-[3.75rem] py-10 lg:max-xl:px-10 max-sm:p-6">
         <h2 className="font-aeonik font-bold text-2xl leading-[1.725rem] mb-8">Latest Products</h2>
         <div className="grid justify-items-center grid-cols-4 gap-y-12 md:max-xl:grid-cols-3 max-md:grid-cols-2">
-        {products.map((product, id) => {
+        {products?.slice(4, 16).map((product: {
+                    name: string,
+                    discount: string,
+                    sale: string,
+                    color: string,
+                    id: string,
+                    photos: { url: string }[],
+                    current_price: { NGN: number[] }[]
+                }, id) => {
           return (<ProductCard
-            img={product.img}
-            price={product.price}
-            brand={product.brand}
-            shoe={product.shoe}
+            img={`https://api.timbu.cloud/images/${product.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
+            price={`₦ ${product.current_price[0].NGN[0].toLocaleString('en-US', {useGrouping: true})}`}
+            brand={''}
+            shoe={product.name}
             discount={product.discount}
             sale={product.sale}
             color={product.color}
+            index={id + 4}
             key={id} />)
         })}
         </div>
@@ -82,3 +118,5 @@ export default function Home() {
     </>
   );
 }
+
+//`https://api.timbu.cloud/extrainfo/products/${product.id}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`

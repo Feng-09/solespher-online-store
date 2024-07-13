@@ -23,8 +23,8 @@ export default function Footer() {
                     <p className="font-aeonik text-sm leading-[1.375rem] text-[#FEFEFE]">Shop</p>
                     <div className="w-0 h-[1px] group-hover:w-8 duration-100 bg-white"></div>
                   </div>
-                  <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer">
-                    <p className="font-aeonik text-sm leading-[1.375rem] text-[#FEFEFE]">Product</p>
+                  <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer" onClick={() => router.push('/products')}>
+                    <p className="font-aeonik text-sm leading-[1.375rem] text-[#FEFEFE]">Products</p>
                     <div className="w-0 h-[1px] group-hover:w-8 duration-100 bg-white"></div>
                   </div>
                   <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer">

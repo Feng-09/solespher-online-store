@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { cartContext } from "@/components/cartContext";
+import { useRouter } from "next/navigation";
 
 type CardProps = {
     img: string,
@@ -10,32 +11,34 @@ type CardProps = {
     brand: string,
     shoe: string,
     discount?: string,
-    sale?: string
-    color: string
+    sale?: string,
+    color: string,
+    index: number
 }
 
 export default function ProductCard(props: CardProps) {
     const { cart, setCart } = useContext(cartContext)
+    const router = useRouter()
 
-    useEffect(() => {
-        if (typeof window != "undefined") {
-            window.localStorage.setItem('cartArray', JSON.stringify(cart))
-        }
-    }, [cart])
+    // useEffect(() => {
+    //     if (typeof window != "undefined") {
+    //         window.localStorage.setItem('cartArray', JSON.stringify(cart))
+    //     }
+    // }, [cart])
 
-    const addToCart = () => {
-            setCart((prevCart) => [...prevCart, {
-                img: props.img,
-                shoe: props.shoe,
-                price: props.price,
-                color: props.color
-            }])
-        }
+    // const addToCart = () => {
+    //         setCart((prevCart) => [...prevCart, {
+    //             img: props.img,
+    //             shoe: props.shoe,
+    //             price: props.price,
+    //             color: props.color,
+    //             qty: 1
+    //         }])
+    //     }
 
     return (
-        <div className="flex flex-col gap-4 relative rounded-lg w-fit max-lg:w-40 max-[400px]:w-36 group hover:cursor-pointer" onClick={addToCart}>
-            <p className="hidden group-hover:inline-block font-aeonik font-medium leading-[1.15rem] text-[#141718] text-xl text-center absolute self-center top-32">Click to add to cart</p>
-            <Image src={props.img} alt="product display" width={280} height={320} className="rounded-lg group-hover:opacity-40 duration-300" />
+        <div className="flex flex-col gap-4 relative rounded-lg w-fit max-lg:w-40 max-[400px]:w-36 group hover:cursor-pointer" onClick={() => {router.push(`/products/${props.index}`)}}>
+            <Image src={props.img} alt="product display" width={280} height={320} className="rounded-lg group-hover:opacity-50 duration-300 h-[11.3875rem] w-[10rem] lg:h-[19.885rem] lg:w-[17.5rem]" />
             {props.sale ?
             (<div className="bg-[#EA4336] rounded-lg py-2 px-3 absolute top-[10px] left-[10px] text-white font-aeonik font-medium text-sm leading-4">{props.sale}</div>)
             : null}

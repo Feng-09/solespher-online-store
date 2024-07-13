@@ -6,6 +6,9 @@ import Footer from "@/components/footer";
 import Menu from "@/components/menu";
 import { MenuContextProvider } from "@/components/menuContext";
 import { CartContextProvider } from "@/components/cartContext";
+import { TanstackProvider } from "@/context/tanstackProvider";
+import { SearchContextProvider } from "@/components/searchContext";
+import Provider from "../../util/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,14 +25,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + ' bg-white pt-[8.25rem]'}>
-        <MenuContextProvider>
-          <CartContextProvider>
-            <NavBar />
-            <Menu />
-            {children}
-          </CartContextProvider>
-        </MenuContextProvider>
-        <Footer />
+        <TanstackProvider>
+          <MenuContextProvider>
+            <SearchContextProvider>
+              <CartContextProvider>
+                <Provider>
+                <NavBar />
+                <Menu />
+                  {children}
+                </Provider>
+              </CartContextProvider>
+            </SearchContextProvider>
+          </MenuContextProvider>
+          <Footer />
+        </TanstackProvider>
       </body>
     </html>
   );

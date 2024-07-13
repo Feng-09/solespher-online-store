@@ -10,14 +10,49 @@ import { useRouter } from "next/navigation";
 export default function Checkout() {
     const [payWith, setPayWith] = useState("card")
     const [check, setCheck] = useState(false)
+    const [firstName, setFirstName] = useState('')
+    const [email, setEmail] = useState('')
+    const [address, setAddress] = useState('')
+    const [country, setCountry] = useState('')
+    const [city, setCity] = useState('')
+    const [cardNo, setCardNo] = useState('')
+    const [expire, setExpire] = useState('')
+    const [cvc, setCvc] = useState('')
+    const [submit, setSubmit] = useState(false)
+
+    const { cart, setCart } = useContext(cartContext)
 
     const router = useRouter()
 
-    const { cart, setCart } = useContext(cartContext)
+    const submitForm = () => {
+        if (firstName == '') {
+        } else if (email == '') {
+        } else if (address == '') {
+        } else if (country == '') {
+        } else if (city == '') {
+        } else if (cardNo == '') {
+        } else if (expire == '') {
+        } else if (cvc == '') {
+        } else {
+            router.push('/order-complete')
+            setCart([])
+        }
+
+        setSubmit(true)
+    }
+    
     const [totalAdd, setTotalAdd] = useState(0)
 
     let subtotal: any;
     let shipping: any;
+
+    const expiro = (e: any) => {
+        setExpire(e.target.value)
+        let expireLength: string[] = expire.split('')
+        if (expireLength.length == 1) {
+            setExpire(a => a + ' / ')
+        }
+    }
 
 
     if (typeof window != "undefined") {
@@ -57,20 +92,20 @@ export default function Checkout() {
                     <div className="flex justify-between w-full gap-x-12">
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">FIRST NAME</h3>
-                            <input placeholder="First name" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="First name" value={firstName} onChange={(e) => {setFirstName(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && firstName == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                         </div>
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">LAST NAME</h3>
-                            <input placeholder="Last name" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="Last name" className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && firstName == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">PHONE NUMBER</h3>
-                        <input placeholder="Phone number" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Phone number" className={"font-aeonik rounded-md px-4 h-10 w-full border-[#6C7275]"} />
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">EMAIL ADDRESS</h3>
-                        <input placeholder="Your email" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Your email" value={email} onChange={(e) => {setEmail(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && email == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                     </div>
                 </div>
             </section>
@@ -80,25 +115,25 @@ export default function Checkout() {
                 <div className="flex flex-col gap-y-6">
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">STREET ADDRESS *</h3>
-                        <input placeholder="Street Address" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Street Address" value={address} onChange={(e) => {setAddress(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && address == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                     </div>
                     <div className="flex flex-col gap-y-3 relative h-fit z-10 active:h-10rem duration-300 group">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">COUNTRY *</h3>
-                        <input placeholder="country" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="country" value={country} onChange={(e) => {setCountry(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && country == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                         <Image src="/images/chevron-down.svg" alt="pick country" width={24} height={24} className="absolute right-4 top-9 group-active:rotate-180 duration-300" />
                     </div>
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">TOWN / CITY *</h3>
-                        <input placeholder="Town / City" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="Town / City" value={city} onChange={(e) => {setCity(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && city == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                     </div>
                     <div className="flex justify-between gap-x-12">
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">STATE</h3>
-                            <input placeholder="State" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="State" className={"font-aeonik rounded-md px-4 h-10 w-full border-[#6C7275]"} />
                         </div>
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">ZIP CODE</h3>
-                            <input placeholder="Zip Code" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="Zip Code" className={"font-aeonik rounded-md px-4 h-10 w-full border-[#6C7275]"} />
                         </div>
                     </div>
                     <div className="flex gap-x-2 items-center hover:cursor-pointer w-fit" onClick={() => {setCheck(a => !a)}}>
@@ -132,30 +167,30 @@ export default function Checkout() {
 
                     <div className="flex flex-col gap-y-3">
                         <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">CARD NUMBER</h3>
-                        <input placeholder="1234 1234 1234" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                        <input placeholder="1234 1234 1234" type="number" value={cardNo} onChange={(e) => {setCardNo(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && cardNo == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                     </div>
                     <div className="flex justify-between gap-x-12">
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">EXPIRATION DATE</h3>
-                            <input placeholder="MM/YY" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="MM/YY" value={expire} onChange={(e) => {expiro(e)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && expire == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                         </div>
                         <div className="flex flex-col gap-y-3 flex-grow">
                             <h3 className="font-aeonik font-bold text-xs leading-[0.8625rem] text-[#6C7275]">CVC</h3>
-                            <input placeholder="CVC code" className="font-aeonik border border-[#6C7275] rounded-md px-4 h-10 w-full" />
+                            <input placeholder="CVC code" maxLength={3} type="number" value={cvc} onChange={(e) => {setCvc(e.target.value)}} className={"font-aeonik rounded-md px-4 h-10 w-full" + (submit == true && cvc == '' ? ' border-red-400 border-2' : ' border-[#6C7275] border')} />
                         </div>
                     </div>
                 </div>
             </section>
             </div>
 
-            <div className="bg-[#141718] py-4 px-10 rounded-lg w-full h-[3.125rem] font-aeonik text-center text-white font-medium tracking-[-0.4px] leading-[1.15rem] hidden lg:block lg:max-w-[40.1875rem] hover:cursor-pointer hover:bg-white hover:text-black border-2 hover:border-black duration-300">Place Order</div>
+            <div className="bg-[#141718] py-4 px-10 rounded-lg w-full h-[3.125rem] font-aeonik text-center text-white font-medium tracking-[-0.4px] leading-[1.15rem] hidden lg:block lg:max-w-[40.1875rem] hover:cursor-pointer hover:bg-white hover:text-black border-2 hover:border-black duration-300" onClick={submitForm}>Place Order</div>
 
             <section className="border border-[#6C7275] flex flex-col gap-y-6 py-6 px-4 rounded lg:w-[25.8125rem] lg:rounded-lg lg:justify-self-end lg:row-span-4 lg:h-fit">
                 <h2 className="font-aeonik font-bold leading-[1.15rem] text-[#141718]">Order Summary</h2>
                 <div className="flex flex-col gap-y-6">
                     <div className="flex flex-col gap-y-6">
                         {cart?.map((item, id) => {
-                            return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} key={id} setSubTotalAdd={setTotalAdd} />)
+                            return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} key={id} qty={item.qty} index={id} setSubTotalAdd={setTotalAdd} />)
                         })}
                     </div>
                     <div className="flex gap-x-2">
@@ -179,7 +214,7 @@ export default function Checkout() {
                 </div>
             </section>
 
-            <div className="bg-[#141718] py-4 px-10 rounded-lg w-full h-[3.125rem] font-aeonik text-center text-white font-medium tracking-[-0.4px] leading-[1.15rem] lg:hidden hover:cursor-pointer hover:bg-white hover:text-black border-2 hover:border-black duration-300">Place Order</div>
+            <div className="bg-[#141718] py-4 px-10 rounded-lg w-full h-[3.125rem] font-aeonik text-center text-white font-medium tracking-[-0.4px] leading-[1.15rem] lg:hidden hover:cursor-pointer hover:bg-white hover:text-black border-2 hover:border-black duration-300" onClick={submitForm}>Place Order</div>
         </main>
         </div>
     )

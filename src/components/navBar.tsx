@@ -8,9 +8,10 @@ import { useContext, useState, useEffect } from "react";
 import { menuContext } from "./menuContext";
 import { cartContext } from "./cartContext";
 import { useRouter } from "next/navigation";
+import { searchContext } from "./searchContext";
 
 export default function NavBar() {
-  const [searchInp, setSearchInp] = useState('');
+  const { searchInp, setSearchInp } = useContext(searchContext)
   const { menu, setMenu } = useContext(menuContext)
   const [cartItems, setCartItems] = useState(0)
   const router = useRouter()
@@ -85,7 +86,7 @@ export default function NavBar() {
               <p className="px-6 py-2 font-aeonik font-normal text-base leading-[1.15rem]">Shop</p>
               <div className="w-0 h-[1px] group-hover:w-8 duration-100 bg-black"></div>
             </div>
-            <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer">
+            <div className="group w-fit h-fit flex flex-col items-center hover:opacity-70 hover:cursor-pointer" onClick={() => router.push('/products')}>
               <p className="px-6 py-2 font-aeonik font-normal text-base leading-[1.15rem]">Products</p>
               <div className="w-0 h-[1px] group-hover:w-8 duration-100 bg-black"></div>
             </div>

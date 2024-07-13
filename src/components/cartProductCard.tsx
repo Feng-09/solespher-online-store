@@ -11,12 +11,14 @@ type CartProductCardProps = {
     shoe: string,
     price: string,
     color: string,
+    qty: number,
+    index: number,
     setSubTotalAdd: React.Dispatch<React.SetStateAction<number>>
 }
 
 export default function CartProductCard(props: CartProductCardProps) {
     const { cart, setCart } = useContext(cartContext)
-    const [ qty, setQty ] = useState(1)
+    const [ qty, setQty ] = useState(props.qty)
 
     const pathname = usePathname()
 
@@ -29,25 +31,28 @@ export default function CartProductCard(props: CartProductCardProps) {
     }, [])
 
     const price = Number(props.price.split(" ").at(1)?.split(",").join(""))
-    const subTotal = qty * price
+    const subTotal = cart[props.index].qty * price
     
     useEffect(() => {
         props.setSubTotalAdd(a => a + (subTotal / 2))
     }, [])
 
     const handleMinus = () => {
-        if (qty > 0) {
-            setQty(a => a - 1)
+        if (cart[props.index].qty > 0) {
+            // setQty(a => a - 1)
+            cart[props.index].qty -= 1
         }
         props.setSubTotalAdd(a => a - price)
     }
 
     const handlePlus = () => {
-        setQty(a => a + 1)
+        // setQty(a => a + 1)
         props.setSubTotalAdd(a => a + price)
+        cart[props.index].qty += 1
     }
 
     const handleRemove = () => {
+        props.setSubTotalAdd(a => a - (cart[props.index].qty * price))
         const newCart = cart.filter((item) => {
             return item.shoe != props.shoe
         })
@@ -55,8 +60,15 @@ export default function CartProductCard(props: CartProductCardProps) {
         if (typeof window != "undefined") {
             window.localStorage.setItem('cartArray', JSON.stringify(newCart))
         }
-        // props.setSubTotalAdd(a => a - (qty * price))
     }
+
+    useEffect(() => {
+        if (cart[props.index].qty == 0) {
+            handleRemove()
+        }
+    }, [cart[props.index].qty])
+
+
 
     return (
         <div className={"py-6 flex gap-x-4 w-full border-b border-[#E8ECEF]" + (pathname === '/cart' ? " lg:grid lg:grid-cols-5" : "")}>
@@ -67,7 +79,7 @@ export default function CartProductCard(props: CartProductCardProps) {
                     <p className="font-aeonik text-[#6C7275] text-xs leading-[0.8625rem]">Color: {props.color}</p>
                     <div className={"border border-[#6C7275] py-2 px-3 w-fit h-fit rounded flex gap-x-[0.625rem]" + (pathname === '/cart' ? " lg:hidden" : "")}>
                         <Image src="/images/Minus.svg" alt="remove" width={16} height={16} className="hover:cursor-pointer" onClick={handleMinus} />
-                        <p className="font-aeonik text-[#121212] text-xs leading-[0.8625rem] font-bold">{qty}</p>
+                        <p className="font-aeonik text-[#121212] text-xs leading-[0.8625rem] font-bold">{props.qty}</p>
                         <Image src="/images/Add.svg" alt="add" width={16} height={16} className="hover:cursor-pointer" onClick={handlePlus} />
                     </div>
                     <div className={"hidden gap-x-1 items-center hover:cursor-pointer" + (pathname === '/cart' ? " lg:flex" : "")} onClick={handleRemove}>
@@ -82,7 +94,7 @@ export default function CartProductCard(props: CartProductCardProps) {
 
                 <div className={"border border-[#6C7275] py-2 px-3 justify-self-end rounded gap-x-[0.625rem] hidden w-fit h-fit" + (pathname === '/cart' ? " lg:flex" : "")}>
                     <Image src="/images/Minus.svg" alt="remove" width={16} height={16} className="hover:cursor-pointer" onClick={handleMinus} />
-                    <p className="font-aeonik text-[#121212] text-xs leading-[0.8625rem] font-bold">{qty}</p>
+                    <p className="font-aeonik text-[#121212] text-xs leading-[0.8625rem] font-bold">{props.qty}</p>
                     <Image src="/images/Add.svg" alt="add" width={16} height={16} className="hover:cursor-pointer" onClick={handlePlus} />
                 </div>
 
