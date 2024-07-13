@@ -122,7 +122,7 @@ export default function Home() {
             discount={product.discount}
             sale={product.sale}
             color={product.color}
-            index={id + 4}
+            index={id}
             key={id} />)
         })}
         </div>
