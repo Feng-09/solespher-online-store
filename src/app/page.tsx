@@ -8,11 +8,14 @@ import ProductCard from "@/components/productCard";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../../pages/api/actions";
 import Products from "./products/page";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { searchContext } from "@/components/searchContext";
 
 export default function Home() {
   const { searchInp, setSearchInp } = useContext(searchContext)
+  const [display, setDisplay] = useState(1)
+  const [start, setStart] = useState(0)
+  const [end, setEnd] = useState(12)
   const { data, isLoading } = useQuery({
     queryKey: ['products'],
     queryFn: async () => await getProducts()
@@ -31,6 +34,19 @@ export default function Home() {
       })
     }
   }, [searchInp])
+
+  const viewPage = (page: number) => {
+    if (page == 1) {
+      setStart(0)
+      setEnd(12)
+    } else if (page == 2) {
+      setStart(12)
+      setEnd(24)
+    } else if (page == 3) {
+      setStart(24)
+      setEnd(30)
+    }
+  }
 
 
   // const extrainfo = async (product: any) => {
@@ -89,7 +105,7 @@ export default function Home() {
       <section className="w-full px-[3.75rem] py-10 lg:max-xl:px-10 max-sm:p-6">
         <h2 className="font-aeonik font-bold text-2xl leading-[1.725rem] mb-8">Latest Products</h2>
         <div className="grid justify-items-center grid-cols-4 gap-y-12 md:max-xl:grid-cols-3 max-md:grid-cols-2">
-        {products?.slice(4, 16).map((product: {
+        {products?.slice(start, end).map((product: {
                     name: string,
                     discount: string,
                     sale: string,
@@ -109,6 +125,11 @@ export default function Home() {
             index={id + 4}
             key={id} />)
         })}
+        </div>
+        <div className="flex gap-x-4 border border-[#6C7275] p-2 rounded-lg mt-8 w-fit">
+          <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 1 ? "" : " opacity-40")} onClick={() => {setDisplay(1); viewPage(1)}}>1</div>
+          <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 2 ? "" : " opacity-40")} onClick={() => {setDisplay(2); viewPage(2)}}>2</div>
+          <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 3 ? "" : " opacity-40")} onClick={() => {setDisplay(3); viewPage(3)}}>3</div>
         </div>
       </section>
 
