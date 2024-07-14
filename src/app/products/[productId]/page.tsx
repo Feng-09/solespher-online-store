@@ -65,24 +65,34 @@ export default function ProductId({ params }: {
                     height={532}
                     className="rounded-lg" />
                 ): (
-                    <div className="font-aeonik font-black text-[#141718] text-3xl w-28 h-36 bg-[#74748B] flex items-center justify-center">...</div>
+                    <div className="font-aeonik font-black text-[#141718] text-3xl w-[16rem] h-[18rem] lg:w-[28rem] lg:h-[33rem] bg-[#74748B] flex items-center justify-center">...</div>
                 )}
 
 
                 <div className="flex gap-x-4 border border-[#6C7275] p-2 rounded-lg mt-8 w-fit">
                     <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 0 ? "" : " opacity-40")} onClick={() => {setDisplay(1); viewPage(1)}}>
-                    <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
+                    {data ? (
+                        <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                         alt="product display"
                         width={40}
                         height={40}
                         className="rounded-lg" />
+                    ) : (
+                        <div className="font-aeonik font-black text-[#141718] w-full h-full bg-[#74748B] flex items-center justify-center">...</div>
+                    )}
+
                     </div>
                     <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 1 ? "" : " opacity-40")} onClick={() => {setDisplay(2); viewPage(2)}}>
-                    <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[1]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
+                    {data ? (
+                        <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[1]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                         alt="product display"
                         width={40}
                         height={40}
                         className="rounded-lg" />
+                    ) : (
+                        <div className="font-aeonik font-black text-[#141718] w-full h-full bg-[#74748B] flex items-center justify-center">...</div>
+                    )}
+
                     </div>
                 </div>
             </div>
