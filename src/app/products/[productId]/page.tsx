@@ -70,14 +70,14 @@ export default function ProductId({ params }: {
 
 
                 <div className="flex gap-x-4 border border-[#6C7275] p-2 rounded-lg mt-8 w-fit">
-                    <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 1 ? "" : " opacity-40")} onClick={() => {setDisplay(1); viewPage(1)}}>
+                    <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 0 ? "" : " opacity-40")} onClick={() => {setDisplay(1); viewPage(1)}}>
                     <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                         alt="product display"
                         width={40}
                         height={40}
                         className="rounded-lg" />
                     </div>
-                    <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 2 ? "" : " opacity-40")} onClick={() => {setDisplay(2); viewPage(2)}}>
+                    <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 1 ? "" : " opacity-40")} onClick={() => {setDisplay(2); viewPage(2)}}>
                     <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[1]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                         alt="product display"
                         width={40}
