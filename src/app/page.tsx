@@ -7,7 +7,6 @@ import ExclusiveCard from "@/components/exclusiveCard";
 import ProductCard from "@/components/productCard";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../../pages/api/actions";
-import Products from "./products/page";
 import { useContext, useEffect, useState } from "react";
 import { searchContext } from "@/components/searchContext";
 
@@ -23,7 +22,6 @@ export default function Home() {
 
   let products: [] = []
   if (data) {
-    console.log(data)
     products = data.items
   }
 
@@ -47,13 +45,6 @@ export default function Home() {
       setEnd(30)
     }
   }
-
-
-  // const extrainfo = async (product: any) => {
-  //   const response = await fetch(`https://api.timbu.cloud/extrainfo/products/${product.id}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`)
-  //   const info = response.json()
-  //   return info;
-  // }
 
   return (
     <>
@@ -113,17 +104,21 @@ export default function Home() {
                     id: string,
                     photos: { url: string }[],
                     current_price: { NGN: number[] }[]
-                }, id) => {
-          return (<ProductCard
-            img={`https://api.timbu.cloud/images/${product.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
-            price={`₦ ${product.current_price[0].NGN[0].toLocaleString('en-US', {useGrouping: true})}`}
-            brand={''}
-            shoe={product.name}
-            discount={product.discount}
-            sale={product.sale}
-            color={product.color}
-            index={id}
-            key={id} />)
+                }, id) => { if (data) {
+                  return (<ProductCard
+                    img={`https://api.timbu.cloud/images/${product.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
+                    price={`₦ ${product.current_price[0].NGN[0].toLocaleString('en-US', {useGrouping: true})}`}
+                    brand={''}
+                    shoe={product.name}
+                    discount={product.discount}
+                    sale={product.sale}
+                    color={product.color}
+                    index={id}
+                    productId={product.id}
+                    key={id} />)
+                } else if (isLoading) {
+                  return <div className="font-aeonik font-black text-[#141718] text-3xl w-28 h-36 bg-[#74748B] flex items-center justify-center">...</div>
+                }
         })}
         </div>
         <div className="flex gap-x-4 border border-[#6C7275] p-2 rounded-lg mt-8 w-fit">

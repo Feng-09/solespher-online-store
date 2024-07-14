@@ -23,15 +23,15 @@ export default function NavBar() {
 
   useEffect(() => {
     if (typeof window != "undefined") {
-        const cartArray: any = window.localStorage.getItem('cartArray')
-        const cart = JSON.parse(cartArray)
+        const cartArray: string | null = window.localStorage.getItem('cartArray')
+        if (typeof cartArray == 'string' ) {const cart = JSON.parse(cartArray)}
         if (cart?.length != 0) {
           setCartItems(cart?.length)
         }
     }
   }, [])
 
-  const handleMenu = /* contextSafe */((e: any) => {
+  const handleMenu = /* contextSafe */((e: React.MouseEvent<HTMLDivElement>) => {
     if (setMenu != undefined)
     setMenu(a => !a)
     if (!menu) {

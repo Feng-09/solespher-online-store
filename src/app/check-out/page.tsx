@@ -46,7 +46,7 @@ export default function Checkout() {
     let subtotal: any;
     let shipping: any;
 
-    const expiro = (e: any) => {
+    const expiro = (e: React.ChangeEvent<HTMLInputElement>) => {
         setExpire(e.target.value)
         let expireLength: string[] = expire.split('')
         if (expireLength.length == 1) {
@@ -59,8 +59,10 @@ export default function Checkout() {
         subtotal = window.localStorage.getItem('subTotal');
         shipping = window.localStorage.getItem('shipping');
         
-        subtotal = JSON.parse(subtotal)
-        shipping = JSON.parse(shipping)
+        if (typeof subtotal == 'string' && typeof shipping == 'string') {
+            subtotal = JSON.parse(subtotal)
+            shipping = JSON.parse(shipping)
+        }
     }
 
     
