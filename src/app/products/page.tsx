@@ -53,7 +53,7 @@ export default function Products() {
                       productId={product.id}
                       key={id} />)
                   } else if (isLoading) {
-                    return <div className="font-aeonik font-black text-[#141718] text-3xl w-28 h-36 bg-[#74748B] flex items-center justify-center">...</div>
+                    return <div className="font-aeonik font-black text-[#141718] text-3xl w-28 h-36 bg-[#74748B] flex items-center justify-center" key={id}>...</div>
                   }
           })}
             </div>
