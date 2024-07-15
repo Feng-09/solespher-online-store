@@ -34,7 +34,7 @@ export default function CartProductCard(props: CartProductCardProps) {
     const subTotal = cart[props.index].qty * price
     
     useEffect(() => {
-        props.setSubTotalAdd(a => a + (subTotal / 2))
+        props.setSubTotalAdd(a => a + subTotal)
     }, [])
 
     const handleMinus = () => {
