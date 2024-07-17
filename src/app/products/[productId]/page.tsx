@@ -11,6 +11,7 @@ export default function ProductId({ params }: {
     params: { productId: number }
 }) {
     const [display, setDisplay] = useState(0)
+    const [loaded, setLoaded] = useState(false)
     const { data, isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: async () => await getProducts()
@@ -58,20 +59,24 @@ export default function ProductId({ params }: {
         <div className="flex flex-col gap-y-20 items-center p-6">
             <main className="w-full flex flex-col gap-y-8 h-fit lg:flex-row lg:justify-between pb-20 lg:px-12">
             <div className="flex flex-col items-start w-full h-fit">
-                {data ? (
+                {data && loaded ? (
                     <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[display]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                     alt="product display"
                     width={465.53}
                     height={532}
+                    onLoad={() => setLoaded(true)}
                     className="rounded-lg" />
                 ): (
-                    <div className="font-aeonik font-black text-[#141718] text-3xl w-[16rem] h-[18rem] lg:w-[28rem] lg:h-[33rem] bg-[#74748B] flex items-center justify-center">...</div>
+                    <div className="relative max-lg:w-40 max-[400px]:w-36 lg:w-60 lg:h-80 bg-slate-300 rounded-2xl flex items-center justify-center">
+                        <div className="loaderCirc"></div>
+                        <div className="loaderCirc2"></div>
+                    </div>
                 )}
 
 
                 <div className="flex gap-x-4 border border-[#6C7275] p-2 rounded-lg mt-8 w-fit">
                     <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 0 ? "" : " opacity-40")} onClick={() => {setDisplay(1); viewPage(1)}}>
-                    {data ? (
+                    {data && loaded ? (
                         <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                         alt="product display"
                         width={40}
@@ -83,7 +88,7 @@ export default function ProductId({ params }: {
 
                     </div>
                     <div className={"p-2 text-white w-10 h-10 flex items-center justify-center rounded-lg bg-[#141718] hover:cursor-pointer" + (display == 1 ? "" : " opacity-40")} onClick={() => {setDisplay(2); viewPage(2)}}>
-                    {data ? (
+                    {data && loaded ? (
                         <Image src={`https://api.timbu.cloud/images/${products[params.productId]?.photos[1]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                         alt="product display"
                         width={40}

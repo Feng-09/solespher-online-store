@@ -13,12 +13,14 @@ type CartProductCardProps = {
     color: string,
     qty: number,
     index: number,
+    subTotalAdd?: number,
     setSubTotalAdd: React.Dispatch<React.SetStateAction<number>>
 }
 
 export default function CartProductCard(props: CartProductCardProps) {
     const { cart, setCart } = useContext(cartContext)
-    const [ qty, setQty ] = useState(props.qty)
+    // const [ qty, setQty ] = useState(cart[props.index].qty)
+    const [totalPrice, setTotalPrice] = useState(0)
 
     const pathname = usePathname()
 
@@ -43,12 +45,20 @@ export default function CartProductCard(props: CartProductCardProps) {
             cart[props.index].qty -= 1
         }
         props.setSubTotalAdd(a => a - price)
+        console.log(props.subTotalAdd)
+        if (typeof window != "undefined") {
+            window.localStorage.setItem('subTotal', JSON.stringify(props.subTotalAdd))
+        }
     }
 
     const handlePlus = () => {
         // setQty(a => a + 1)
         props.setSubTotalAdd(a => a + price)
         cart[props.index].qty += 1
+        console.log(props.subTotalAdd)
+        if (typeof window != "undefined") {
+            window.localStorage.setItem('subTotal', JSON.stringify(props.subTotalAdd))
+        }
     }
 
     const handleRemove = () => {
@@ -66,6 +76,10 @@ export default function CartProductCard(props: CartProductCardProps) {
         if (cart[props.index].qty == 0) {
             handleRemove()
         }
+        if (typeof window != "undefined") {
+            window.localStorage.setItem('cartArray', JSON.stringify(cart))
+        }
+        setTotalPrice(price * cart[props.index].qty)
     }, [cart[props.index].qty])
 
 
@@ -88,7 +102,7 @@ export default function CartProductCard(props: CartProductCardProps) {
                     </div>
                 </div>
                 <div className={"flex flex-col gap-y-2 items-end" + (pathname === '/cart' ? " lg:hidden" : "")}>
-                    <h2 className="font-aeonik font-bold text-sm leading-4 text-[#141718] text-right">{props.price}</h2>
+                    <h2 className="font-aeonik font-bold text-sm leading-4 text-[#141718] text-right">{"₦ " + totalPrice}</h2>
                     <Image src="/images/Line.svg" alt="delete" width={24} height={24} className="hover:cursor-pointer" onClick={handleRemove} />
                 </div>
 

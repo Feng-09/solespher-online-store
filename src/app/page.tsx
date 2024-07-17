@@ -20,6 +20,8 @@ export default function Home() {
     queryFn: async () => await getProducts()
   })
 
+  const loaderArr = [1,2,3,4,5,6,7,8,9,10,11,12]
+
   let products: [] = []
   if (data) {
     products = data.items
@@ -96,7 +98,7 @@ export default function Home() {
       <section className="w-full px-[3.75rem] py-10 lg:max-xl:px-10 max-sm:p-6">
         <h2 className="font-aeonik font-bold text-2xl leading-[1.725rem] mb-8">Latest Products</h2>
         <div className="grid justify-items-center grid-cols-4 gap-y-12 md:max-xl:grid-cols-3 max-md:grid-cols-2">
-        {products?.slice(start, end).map((product: {
+        {data ? products?.slice(start, end).map((product: {
                     name: string,
                     discount: string,
                     sale: string,
@@ -104,7 +106,7 @@ export default function Home() {
                     id: string,
                     photos: { url: string }[],
                     current_price: { NGN: number[] }[]
-                }, id) => { if (data) {
+                }, id) => {
                   return (<ProductCard
                     img={`https://api.timbu.cloud/images/${product.photos[0]?.url}?organization_id=c7ab58dd60ac44b58fdaaba775b4e3f7&reverse_sort=false&Appid=XQQYQ1CDHQ0RBBZ&Apikey=6f96b3ce51794908bdb767033000c31d20240712161809995865`}
                     price={`₦ ${product.current_price[0].NGN[0].toLocaleString('en-US', {useGrouping: true})}`}
@@ -116,9 +118,12 @@ export default function Home() {
                     index={id}
                     productId={product.id}
                     key={id} />)
-                } else if (isLoading) {
-                  return <div className="font-aeonik font-black text-[#141718] text-3xl h-[15rem] max-lg:w-40 max-[400px]:w-36 max-lg:h-60 lg:w-[17.5rem] lg:h-[26.5rem] bg-[#74748B] flex items-center justify-center" key={id}>...</div>
                 }
+        ) : loaderArr.map((item) => {
+          return (<div className="relative max-lg:w-40 max-[400px]:w-36 lg:w-60 lg:h-80 bg-slate-300 rounded-2xl flex items-center justify-center">
+                    <div className="loaderCirc"></div>
+                    <div className="loaderCirc2"></div>
+                  </div>)
         })}
         </div>
         <div className="flex gap-x-4 border border-[#6C7275] p-2 rounded-lg mt-8 w-fit">

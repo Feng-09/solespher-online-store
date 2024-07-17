@@ -61,7 +61,7 @@ export default function Cart() {
             <div className="flex flex-col gap-y-6">
                 {cart?.length === 0 ? (<div className="font-aeonik font-medium leading-[1.15rem] text-[#6C7275] text-center py-40">There are currently no items in your cart</div>) :
                  cart?.map((item, id) => {
-                    return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} setSubTotalAdd={setSubTotalAdd} qty={item.qty} key={id} index={id} />)
+                    return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} setSubTotalAdd={setSubTotalAdd} subTotalAdd={subTotalAdd} qty={item.qty} key={id} index={id} />)
                 })}
             </div>
             {cart?.length !== 0 ? (<div className="font-aeonik font-medium leading-[1.15rem] text-red-400 text-center py-2 float-right border-2 border-red-400 rounded-2xl px-4 mt-4 hover:cursor-pointer hover:border-red-600 hover:text-red-600 duration-100" onClick={handleClear}>Clear Cart</div>) : null}

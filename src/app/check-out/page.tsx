@@ -59,7 +59,7 @@ export default function Checkout() {
         subtotal = window.localStorage.getItem('subTotal');
         shipping = window.localStorage.getItem('shipping');
         
-        if (typeof subtotal == 'string' && typeof shipping == 'string') {
+        if (typeof subtotal === 'string' && typeof shipping === 'string') {
             subtotal = JSON.parse(subtotal)
             shipping = JSON.parse(shipping)
         }
@@ -192,7 +192,7 @@ export default function Checkout() {
                 <div className="flex flex-col gap-y-6">
                     <div className="flex flex-col gap-y-6">
                         {cart?.map((item, id) => {
-                            return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} key={id} qty={item.qty} index={id} setSubTotalAdd={setTotalAdd} />)
+                            return (<CartProductCard img={item.img} shoe={item.shoe} price={item.price} color={item.color} key={id} qty={item.qty} index={id} subTotalAdd={totalAdd} setSubTotalAdd={setTotalAdd} />)
                         })}
                     </div>
                     <div className="flex gap-x-2">
