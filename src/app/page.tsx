@@ -119,8 +119,8 @@ export default function Home() {
                     productId={product.id}
                     key={id} />)
                 }
-        ) : loaderArr.map((item) => {
-          return (<div className="relative max-lg:w-40 max-[400px]:w-36 lg:w-60 lg:h-80 bg-slate-300 rounded-2xl flex items-center justify-center">
+        ) : loaderArr.map((item, id) => {
+          return (<div key={id} className="relative max-lg:w-40 max-[400px]:w-36 lg:w-60 lg:h-80 bg-slate-300 rounded-2xl flex items-center justify-center">
                     <div className="loaderCirc"></div>
                     <div className="loaderCirc2"></div>
                   </div>)
