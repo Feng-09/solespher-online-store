@@ -63,7 +63,7 @@ export default function Checkout() {
             }
         }
 
-        const [totalAdd, setTotalAdd] = useState(subtotal / 2)
+        const [totalAdd, setTotalAdd] = useState(subtotal / 3)
     // }, [totalAdd])
 
     
