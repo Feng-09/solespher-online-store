@@ -40,8 +40,6 @@ export default function Checkout() {
 
         setSubmit(true)
     }
-    
-    const [totalAdd, setTotalAdd] = useState(0)
 
     let subtotal: any;
     let shipping: any;
@@ -54,7 +52,7 @@ export default function Checkout() {
         }
     }
 
-    useEffect(() => {
+    // useEffect(() => {
         if (typeof window != "undefined") {
             subtotal = window.localStorage.getItem('subTotal');
             shipping = window.localStorage.getItem('shipping');
@@ -64,7 +62,9 @@ export default function Checkout() {
                 shipping = JSON.parse(shipping)
             }
         }
-    }, [totalAdd])
+
+        const [totalAdd, setTotalAdd] = useState(subtotal)
+    // }, [totalAdd])
 
     
     useEffect(() => {
@@ -207,11 +207,11 @@ export default function Checkout() {
                         </div>
                         <div className="flex justify-between items-center py-[0.8125rem] border-b border-[#E8ECEF]">
                             <p className="font-aeonik text-[#141718] leading-[1.15rem]">Subtotal</p>
-                            <p className="font-aeonik font-bold text-[#141718] leading-[1.15rem]">{"₦ " + subtotal?.toLocaleString('en-US', {useGrouping: true})}</p>
+                            <p className="font-aeonik font-bold text-[#141718] leading-[1.15rem]">{"₦ " + totalAdd?.toLocaleString('en-US', {useGrouping: true})}</p>
                         </div>
                         <div className="flex justify-between items-center py-[0.8125rem]">
                             <p className="font-aeonik font-medium text-xl leading-[1.4375rem] text-[#141718]">Total</p>
-                            <p className="font-aeonik font-medium text-xl leading-[1.4375rem] text-[#141718]">{shipping === "express" ? "₦ " + (subtotal + 2340)?.toLocaleString('en-US', {useGrouping: true}) : "₦ " + subtotal?.toLocaleString('en-US', {useGrouping: true})}</p>
+                            <p className="font-aeonik font-medium text-xl leading-[1.4375rem] text-[#141718]">{shipping === "express" ? "₦ " + (totalAdd + 2340)?.toLocaleString('en-US', {useGrouping: true}) : "₦ " + totalAdd?.toLocaleString('en-US', {useGrouping: true})}</p>
                         </div>
                     </div>
                 </div>
