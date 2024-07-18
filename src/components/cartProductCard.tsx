@@ -35,7 +35,9 @@ export default function CartProductCard(props: CartProductCardProps) {
     const subTotal = cart[props.index].qty * price
     
     useEffect(() => {
-        props.setSubTotalAdd(a => a + subTotal)
+        if (pathname === '/cart') {
+            props.setSubTotalAdd(a => a + subTotal)
+        }
     }, [])
 
     const handleMinus = () => {
@@ -64,6 +66,7 @@ export default function CartProductCard(props: CartProductCardProps) {
         setCart(newCart)
         if (typeof window != "undefined") {
             window.localStorage.setItem('cartArray', JSON.stringify(newCart))
+            window.localStorage.setItem('subTotal', JSON.stringify(props.subTotalAdd))
         }
     }
 
