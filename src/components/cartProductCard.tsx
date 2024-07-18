@@ -19,7 +19,6 @@ type CartProductCardProps = {
 
 export default function CartProductCard(props: CartProductCardProps) {
     const { cart, setCart } = useContext(cartContext)
-    // const [ qty, setQty ] = useState(cart[props.index].qty)
     const [totalPrice, setTotalPrice] = useState(0)
 
     const pathname = usePathname()
@@ -41,21 +40,17 @@ export default function CartProductCard(props: CartProductCardProps) {
 
     const handleMinus = () => {
         if (cart[props.index].qty > 0) {
-            // setQty(a => a - 1)
             cart[props.index].qty -= 1
         }
         props.setSubTotalAdd(a => a - price)
-        console.log(props.subTotalAdd)
         if (typeof window != "undefined") {
             window.localStorage.setItem('subTotal', JSON.stringify(props.subTotalAdd))
         }
     }
 
     const handlePlus = () => {
-        // setQty(a => a + 1)
         props.setSubTotalAdd(a => a + price)
         cart[props.index].qty += 1
-        console.log(props.subTotalAdd)
         if (typeof window != "undefined") {
             window.localStorage.setItem('subTotal', JSON.stringify(props.subTotalAdd))
         }
