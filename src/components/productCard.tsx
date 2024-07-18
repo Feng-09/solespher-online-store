@@ -42,6 +42,7 @@ export default function ProductCard(props: CardProps) {
             (<div className="bg-[#EA4336] rounded-lg py-2 px-3 absolute top-[10px] left-[10px] text-white font-aeonik font-medium text-sm leading-4">{props.sale}</div>)
             : null}
             <div className="flex flex-col gap-4 relative">
+                {/* <div className="absolute right-2 top-2 rounded-full flex items-center justify-center p-2 text-xl font-black text-[#141718] border-2 border-[#141718]">+</div> */}
                 <h2 className="font-aeonik text-[#EA4336] font-bold text-[1.75rem] leading-[2.0125rem] max-lg:text-base">{props.price}</h2>
                 <p className="font-aeonik font-medium text-[#74748B] leading-[1.15rem]">{info[1]?.value}</p>
                 <p className="font-aeonik font-medium text-[#141718] leading-[1.15rem] tracking-tight">{props.shoe}</p>
